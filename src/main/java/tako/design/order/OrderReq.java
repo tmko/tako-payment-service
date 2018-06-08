@@ -6,7 +6,6 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import tako.design.replayPrevention.UuidTimeBoundNonce;
 
-import java.util.UUID;
 import java.util.regex.Pattern;
 
 @Data
