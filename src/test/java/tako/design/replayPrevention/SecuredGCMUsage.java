@@ -1,4 +1,6 @@
-package tako.design.other;
+package tako.design.replayPrevention;
+
+import org.junit.Test;
 
 import javax.crypto.*;
 import javax.crypto.spec.GCMParameterSpec;
@@ -20,8 +22,8 @@ public class SecuredGCMUsage {
 
 
 
-
-    public static void main(String args[]) {
+    @Test
+    public void main() {
         test("this is 1");
         test("this is 2");
         test("thas is 1");

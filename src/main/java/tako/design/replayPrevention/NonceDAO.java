@@ -8,17 +8,17 @@ import java.util.UUID;
 
 @Data
 @Entity(name = "nonces")
-public class NonceEntity {
+public class NonceDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column
-    private boolean used = false;
+    private Boolean used = false;
 
     @Column
-    private long unixTime = Instant.now().toEpochMilli();
+    private Long unixTime = Instant.now().toEpochMilli();
 
     @Column
     @Convert(converter = UUIDConverter.class)

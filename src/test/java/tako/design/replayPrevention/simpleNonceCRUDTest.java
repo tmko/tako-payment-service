@@ -2,7 +2,6 @@ package tako.design.replayPrevention;
 
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class simpleNonceCRUDTest {
 
     @Test
     public void simpleSaveAndRead () {
-        NonceEntity nonce = new NonceEntity();
+        NonceDAO nonce = new NonceDAO();
         repository.save(nonce);
 
         long id = nonce.getId();
@@ -37,11 +36,11 @@ public class simpleNonceCRUDTest {
 
     @Test
     public void simpleFindAndRead () {
-        NonceEntity nonce = new NonceEntity();
+        NonceDAO nonce = new NonceDAO();
         repository.save(nonce);
 
         UUID uuid = nonce.getUuid();
-        Optional<NonceEntity> entry = repository.findFirstByUuid(uuid);
+        Optional<NonceDAO> entry = repository.findFirstByUuid(uuid);
 
         Assert.assertTrue   ( entry.isPresent() );
         Assert.assertEquals ( nonce, entry.get() );
@@ -50,11 +49,15 @@ public class simpleNonceCRUDTest {
 
     @Test
     public void consumingNonce() {
-        NonceEntity nonce = new NonceEntity();
+        NonceDAO nonce = new NonceDAO();
         repository.save(nonce);
 
         UUID uuid = nonce.getUuid();
-        repository.consumeNonce(uuid);
+        int n1 = repository.consumeNonce(uuid);
+        int n2 = repository.consumeNonce(uuid);
+
+        Assert.assertEquals( n1, 1);
+        Assert.assertEquals( n2, 0);
     }
 
 
@@ -63,11 +66,11 @@ public class simpleNonceCRUDTest {
         int _10ms = 10;
         int trial = 100;
 
-        NonceEntity[] nonces = new NonceEntity[trial];
+        NonceDAO[] nonces = new NonceDAO[trial];
 
         long startTime = System.currentTimeMillis();
         for ( int i=0; i<trial; i++ )
-            nonces[i] = new NonceEntity();
+            nonces[i] = new NonceDAO();
         long endTime = System.currentTimeMillis();
 
         HashSet<String> uniqueTest = new HashSet<>();

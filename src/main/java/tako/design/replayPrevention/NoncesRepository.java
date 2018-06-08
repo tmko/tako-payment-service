@@ -12,9 +12,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface NoncesRepository extends CrudRepository<NonceEntity, Long> {
+public interface NoncesRepository extends CrudRepository<NonceDAO, Long> {
 
-    Optional<NonceEntity> findFirstByUuid (UUID uuid);
+    Optional<NonceDAO> findFirstByUuid (UUID uuid);
 
 
     @Modifying
