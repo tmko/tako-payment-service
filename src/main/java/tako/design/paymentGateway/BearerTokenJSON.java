@@ -1,10 +1,10 @@
-package tako.design.paymentGatway;
+package tako.design.paymentGateway;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class BearerTokenEntity {
+public class BearerTokenJSON {
 
     @JsonProperty
     private String access_token;
@@ -20,6 +20,5 @@ public class BearerTokenEntity {
 
     @JsonProperty
     private Integer expires_in;
-
 
 }

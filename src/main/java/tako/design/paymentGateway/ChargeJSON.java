@@ -1,10 +1,10 @@
-package tako.design.paymentGatway;
+package tako.design.paymentGateway;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class ChargeEntity {
+public class ChargeJSON {
 
     @JsonProperty
     private Float amount;

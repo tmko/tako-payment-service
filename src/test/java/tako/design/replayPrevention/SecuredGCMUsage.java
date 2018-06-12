@@ -1,5 +1,6 @@
 package tako.design.replayPrevention;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.crypto.*;
@@ -13,6 +14,7 @@ import java.util.Base64;
 /**
  This class shows how to securely perform AES encryption in GCM mode, with 256 bits key size.
  */
+@Ignore
 public class SecuredGCMUsage {
 
     public static int AES_KEY_SIZE = 256 ;
