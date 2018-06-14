@@ -18,10 +18,14 @@ public class BearerTokenTest {
 
     @Test
     public void simpleGetToken () {
-        tokenManager.getToken();
+        String token1 = tokenManager.getToken();
+        Assert.assertTrue( token1 != null );
+        Assert.assertFalse( token1.isEmpty() );
 
-        Assert.assertTrue( tokenManager != null );
-        Assert.assertFalse( tokenManager.getToken().getAccess_token().isEmpty() );
+        String token2 = tokenManager.getToken();
+        Assert.assertEquals(token1,token2);
+
+        System.out.println(token1);
     }
 
 }
